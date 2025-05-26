@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sixing: borderbox;
+  font-family: "A Love of Thunder";
+
+}
+
+body{
+  min-height: 100vh;
+  background: linear-gradient(
+  -135deg,
+  rgb(39, 28, 243), #ec2f12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
