@@ -5,13 +5,36 @@ const reset = document.getElementById("reset");
 
 let timeLeft = 1500
 let interval;
-let breaktime = 0;
-let barrier = 0;
+let breaktime = 0; //the intention of this is to start a 5min timer AFTER the 25 min timer
+let barrier = 0; //this literally only exits bsc if you spam the start button it increases the amount the time left is decreased per click and idk how to fix it
+
+const shorttimer = () => {
+  clearInterval(interval);
+  timeLeft = 300
+  updateTimer();
+  barrier = 0
+  alert("breaktime!");
+  breaktime = 0
+}
+const longtimer = () => {
+  clearInterval(interval);
+  timeLeft = 1500
+  updateTimer();
+  barrier = 0
+  alert("GRIND TIME BABYYYY!");
+  breaktime = 1
+}
 
 const blocker = () => {
   alert("stop pressing the timer twice! it makes the timer run faster and idk how to fix it ;-;");
   clearInterval(interval);
-  timeLeft = 1500
+  if (breaktime = 0) {
+    timeLeft = 1500
+    updateTimer();
+    barrier = 0;
+  }
+  else
+    timeLeft = 300
   updateTimer();
   barrier = 0;
 }
@@ -36,9 +59,12 @@ const startTimer = () => {
   updateTimer();
 
   if (timeLeft === 0) {
-    alert("Times is up my mans!");
-    timeLeft = 1500;
-    updateTimer();
+    if (breaktime = 0) {
+      longtimer();
+    }
+    else {
+      shorttimer();
+    }
   }
   }, 1000);
 };
@@ -49,10 +75,16 @@ const stopTimer = () => {
 };
 
 const resetTimer = () => {
-  clearInterval(interval);
+  if (breaktime = 0) {
+    clearInterval(interval);
     timeLeft = 1500;
     updateTimer();
     barrier = 0
+  }
+  else clearInterval(interval);
+  timeLeft = 300;
+  updateTimer();
+  barrier = 0
   }
 
 
