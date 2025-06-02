@@ -2,15 +2,15 @@
   margin: 0;
   padding: 0;
   box-sixing: borderbox;
-  font-family: "A Love of Thunder";
+  font-family: "Fonarto Regular", Serif;
 
 }
 
 body{
   min-height: 100vh;
   background: linear-gradient(
-  -135deg,
-  rgb(39, 28, 243), #ec2f12);
+  180deg,
+  rgb(58, 60, 65), #232425);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,11 +21,16 @@ body{
   align-items: center;
   justify-content: center;
   gap: 2em;
+  background-color: rgba(229, 142, 230, .8);
+  padding: 3em 3em;
+  border-radius: 5em;
+  border: none;
 }
 
 .title{
   color: white;
   font-size: 5em;
+  font-weight: lighter;
 }
 
 hr{
@@ -53,6 +58,11 @@ button{
   padding: 0.5em 1.5em;
   border-radius: 0.5em;
   border: none;
+  cursor: 8;
+  transition: 0.2s ease-in-out;
+}
+button:hover{
+  transform: translateY(-10px);
 }
 
 #start{
