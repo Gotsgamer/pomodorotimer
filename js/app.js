@@ -3,7 +3,7 @@ const start = document.getElementById("start");
 const stop = document.getElementById("stop");
 const reset = document.getElementById("reset");
 
-let timeLeft = 5
+let timeLeft = 1500 //we start on long timer by defult
 let interval;
 let breaktime = 0; //the intention of this is to start a 5min timer AFTER the 25 min timer
 let barrier = 0; //this literally only exits bsc if you spam the start button it increases the amount the time left is decreased per click and idk how to fix it
