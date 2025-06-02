@@ -3,7 +3,7 @@ const start = document.getElementById("start");
 const stop = document.getElementById("stop");
 const reset = document.getElementById("reset");
 
-let timeLeft = 1500 //we start on long timer by defult
+let timeLeft = 1500
 let interval;
 let breaktime = 0; //the intention of this is to start a 5min timer AFTER the 25 min timer
 let barrier = 0; //this literally only exits bsc if you spam the start button it increases the amount the time left is decreased per click and idk how to fix it
@@ -108,4 +108,4 @@ reset.addEventListener("click",resetTimer);
 //like whne I added the time switching I had to change how my barrier
 //varible acted in response.
 //while my variable usage did work in this attempt its not scalealbe
-//I need to find out how I can find inbuilt elements or keywords that do what I want that way I don't need vairables. 
+//I need to find out how I can find inbuilt elements or keywords that do what I want that way I don't need vairables.
