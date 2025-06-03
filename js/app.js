@@ -5,7 +5,7 @@ const reset = document.getElementById("reset");
 
 let timeLeft = 1500
 let interval;
-let breaktime = 0; //the intention of this is to start a 5min timer AFTER the 25 min timer
+let breaktime = 1; //the intention of this is to start a 5min timer AFTER the 25 min timer
 let barrier = 0; //this literally only exits bsc if you spam the start button it increases the amount the time left is decreased per click and idk how to fix it
 
 // i set these up bsc I decided that inverted the colors on break time is just a cool idea :)
@@ -17,9 +17,7 @@ const shorttimer = () => {
   clearInterval(interval);
   timeLeft = 300
   updateTimer();
-  barrier = 0
   alert("breaktime!");
-  breaktime = 0
   body.style.background = "linear-gradient(-135deg, #E58EE6CC, #E58EE6CC)";
   container.style.backgroundColor = "#232425FF";
 
@@ -27,26 +25,14 @@ const shorttimer = () => {
 const longtimer = () => {
   clearInterval(interval);
   timeLeft = 1500
-  updateTimer();
-  barrier = 0
-  alert("GRIND TIME BABYYYY!");
-  breaktime = 1
+  updateTimer();alert("GRIND TIME BABYYYY!");
   body.style.background = "linear-gradient(-135deg, #3A3C41FF, #232425FF)";
   container.style.backgroundColor = "#E58EE6CC";
 }
 
 const blocker = () => {
   alert("stop pressing the timer twice! it makes the timer run faster and idk how to fix it ;-;");
-  clearInterval(interval);
-  if (breaktime = 0) {
-    timeLeft = 1500
-    updateTimer();
-    barrier = 0;
-  }
-  else
-    timeLeft = 300
-  updateTimer();
-  barrier = 0;
+  resetTimer();
 }
 
 const updateTimer = () => {
@@ -65,17 +51,21 @@ const startTimer = () => {
     blocker();
   }
   else interval = setInterval(() =>{
-  timeLeft --;
-  updateTimer();
+    timeLeft --;
+    updateTimer();
 
-  if (timeLeft === 0) {
-    if (breaktime = 0) {
-      longtimer();
+    if (timeLeft === 0) {
+      if (breaktime === 0 ) {
+        barrier = 0
+        breaktime = 2
+        longtimer();
+      }
+      else {
+        barrier = 0
+        breaktime = 0
+        shorttimer();
+      }
     }
-    else {
-      shorttimer();
-    }
-  }
   }, 1000);
 };
 
@@ -83,19 +73,21 @@ const stopTimer = () => {
   clearInterval(interval);
   barrier = 0
 };
-
 const resetTimer = () => {
-  if (breaktime = 0) {
+  if (breaktime === 2 || breaktime === 1) { //this line is a little reduncent cause if (breaktime > 0) would work just fine
+    barrier = 0;
+    breaktime = 2;
     clearInterval(interval);
     timeLeft = 1500;
     updateTimer();
-    barrier = 0
+  } else {
+    barrier = 0;
+    breaktime = 0;
+    clearInterval(interval);
+    timeLeft = 300;
+    updateTimer();
   }
-  else clearInterval(interval);
-  timeLeft = 300;
-  updateTimer();
-  barrier = 0
-  }
+}
 
 
 start.addEventListener("click", startTimer);
@@ -109,3 +101,7 @@ reset.addEventListener("click",resetTimer);
 //varible acted in response.
 //while my variable usage did work in this attempt its not scalealbe
 //I need to find out how I can find inbuilt elements or keywords that do what I want that way I don't need vairables.
+
+//im a fucking moron why did I assign 1 and 2 to long timer I just needed one litearlly no other function
+//then reset timer reconizes long timer as 2 why am I makign this more complex, yk what its 11:50pm i have work tmr
+//it works idc
